@@ -15,3 +15,6 @@ down:
 
 mysql:
 	docker-compose exec mysql mysql --user=root --password=root
+
+style:
+	docker compose exec -T -e PHP_CS_FIXER_IGNORE_ENV=1 php bash -c "php vendor/bin/php-cs-fixer fix --dry-run --diff -vvv"
