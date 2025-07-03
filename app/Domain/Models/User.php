@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Models;
 
+use App\Infrastructure\Supports\Enums\UserRoleEnum;
+use App\Infrastructure\Supports\Enums\UserStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Ramsey\Uuid\UuidInterface;
 
 class User extends Authenticatable
 {
@@ -22,6 +25,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'status',
+        'roles',
+        'last_login',
         'password',
     ];
 
@@ -35,6 +41,22 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    protected $casts = [
+        'roles' => 'json',
+    ];
+
+    public function __construct(array $attributes = [])
+    {
+        $this->addRole(UserRoleEnum::ROLE_USER);
+        $this->setStatus(UserStatusEnum::AWAITING_CONFIRMATION);
+
+        parent::__construct($attributes);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -46,5 +68,40 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function setId(UuidInterface $uuid): void
+    {
+        $this->id = $uuid->toString();
+    }
+
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function setStatus(UserStatusEnum $status): void
+    {
+        $this->attributes['status'] = $status->value;
+    }
+
+    public function addRole(UserRoleEnum $role): void
+    {
+        $roles = $this->roles ?? [];
+
+        if (false === in_array($role->value, $roles, strict: true)) {
+            $roles[] = $role->value;
+            $this->roles = $roles;
+        }
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 }
