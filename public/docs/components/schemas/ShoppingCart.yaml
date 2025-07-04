@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "ID do item no carrinho"
+    example: "22222222-aaaa-bbbb-cccc-000000000001"
+  product_id:
+    type: string
+    format: uuid
+    description: "ID do Produto"
+    example: "1789995d-dceb-4df1-a122-6e5f3d3c61f2"
+  user_id:
+    type: string
+    format: uuid
+    description: "ID do Usuário"
+    example: "1988888d-dceb-4df1-a122-6e5f3d3c61f3"
+  quantity:
+    type: integer
+    description: "Quantidade do Produto no carrinho"
+    example: 2
+  createdAt:
+    type: string
+    format: date-time
+    description: "Data de criação do item no carrinho"
+    example: "2024-07-04T18:00:00Z"
+  updatedAt:
+    type: string
+    format: date-time
+    nullable: true
+    description: "Data da última atualização do item no carrinho"
+    example: "2024-07-05T12:00:00Z"
