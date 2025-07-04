@@ -23,7 +23,7 @@ git clone https://github.com/alessandrofeitoza/api-shopping-cart
 Se você estiver usando ambiente Linux, basta rodar um comando no terminal, através do `make`:
 
 ```shell
-make start
+make init
 ```
 
 **Obs:** Esse comando vai subir preparar todo o ambiente: 
