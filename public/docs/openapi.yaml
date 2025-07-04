@@ -34,5 +34,7 @@ components:
       $ref: './components/schemas/Product.yaml'
     ProductCategory:
       $ref: './components/schemas/ProductCategory.yaml'
+    ShoppingCart:
+      $ref: './components/schemas/ShoppingCart.yaml'
     User:
       $ref: './components/schemas/User.yaml'
