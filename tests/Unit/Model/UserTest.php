@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace tests\Unit\Model;
+namespace Tests\Unit\Model;
 
 use App\Domain\Models\User;
 use App\Infrastructure\Supports\Enums\UserRoleEnum;

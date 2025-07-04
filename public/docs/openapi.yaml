@@ -3,6 +3,7 @@ info:
   title: API Shopping Cart
   description: |-
     API responsável por praticamente todas as funcionalidades de gerenciamento:
+    - Product
     - ProductCategory
     - User
 
@@ -29,6 +30,8 @@ paths:
     $ref: './components/paths/product-category/Item.yaml'
 components:
   schemas:
+    Product:
+      $ref: './components/schemas/Product.yaml'
     ProductCategory:
       $ref: './components/schemas/ProductCategory.yaml'
     User:

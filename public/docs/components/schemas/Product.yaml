@@ -1,0 +1,55 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "ID do Produto"
+    example: "1789995d-dceb-4df1-a122-6e5f3d3c61f2"
+  name:
+    type: string
+    maxLength: 30
+    description: "Nome do Produto"
+    example: "Cerveja Artesanal IPA"
+  description:
+    type: string
+    maxLength: 255
+    nullable: true
+    description: "Descrição do Produto"
+    example: "Garrafa de 600ml"
+  category_id:
+    type: integer
+    nullable: true
+    description: "ID da Categoria do Produto"
+    example: 3
+  price:
+    type: number
+    format: float
+    description: "Preço do Produto"
+    example: 15.90
+  photo:
+    type: string
+    maxLength: 255
+    nullable: true
+    description: "URL ou nome do arquivo da foto do Produto"
+    example: "cerveja.jpg"
+  quantity:
+    type: integer
+    description: "Quantidade disponível do Produto"
+    example: 100
+  createdAt:
+    type: string
+    format: date-time
+    description: "Data de criação do Produto"
+    example: "2024-07-04T18:00:00Z"
+  updatedAt:
+    type: string
+    format: date-time
+    nullable: true
+    description: "Data da última atualização do Produto"
+    example: "2024-07-05T12:00:00Z"
+  deletedAt:
+    type: string
+    format: date-time
+    nullable: true
+    description: "Data de exclusão lógica do Produto"
+    example: null
