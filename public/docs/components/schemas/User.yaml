@@ -1,0 +1,46 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "ID do usuário"
+    example: "123e4567-e89b-12d3-a456-426614174000"
+  name:
+    type: string
+    maxLength: 50
+    description: "Nome do usuário"
+    example: "Fulano da Silva"
+  email:
+    type: string
+    maxLength: 100
+    description: "E-mail de cadastro de usuário"
+    example: "fulano.silva@mail.com"
+  password:
+    type: string
+    maxLength: 255
+    description: "Hash da senha de acesso do usuário"
+    example: "$2y$13$xOUg4FWI/nAITBfTp.fACOTvqe9nJkvXOByDDr/w1N37/yAFMs04C"
+  roles:
+    type: array
+    anyOf:
+      - ROLE_USER
+      - ROLE_ADMIN
+    description: "Perfis do usuário"
+  status:
+    type: string
+    enum:
+      - AwaitingConfirmation
+      - Active
+      - Blocked
+    description: "Status do usuário"
+  createdAt:
+    $ref: '../common-types/datetime.yaml'
+    description: "Data e hora da criação do usuário"
+  updatedAt:
+    $ref: '../common-types/datetime.yaml'
+    nullable: true
+    description: "Data e hora da última atualização do usuário"
+  deletedAt:
+    $ref: '../common-types/datetime.yaml'
+    nullable: true
+    description: "Data e hora da exclusão do usuário"

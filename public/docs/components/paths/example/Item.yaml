@@ -1,0 +1,5 @@
+get:
+  summary: Endpoint Test
+  responses:
+    '200':
+      description: Test
