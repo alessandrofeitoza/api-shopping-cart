@@ -1,0 +1,31 @@
+get:
+  tags:
+    - User
+  summary: Get A list of User
+  responses:
+    '200':
+      description: Lista de Usuários
+      content:
+        application/json:
+          schema:
+            items:
+              oneOf:
+                - $ref: '../../schemas/User.yaml'
+
+post:
+  tags:
+    - User
+  summary: Creates a User
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/User.yaml'
+  responses:
+    '201':
+      description: Usuário criado
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/User.yaml'

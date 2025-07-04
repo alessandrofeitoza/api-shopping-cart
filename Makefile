@@ -6,7 +6,7 @@ init: start
 	docker compose exec php bash -c "composer install"
 	docker compose exec php bash -c "php artisan key:generate"
 	docker compose exec php bash -c "php artisan migrate"
-	docker compose exec php bash -c "php artisan db:seed"
+	docker compose exec php bash -c "php artisan migrate:"
 start:
 	docker compose up -d
 
