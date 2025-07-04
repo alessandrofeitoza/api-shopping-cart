@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Domain\Repository\ExampleRepository;
-use App\Domain\Repository\RepositoryInterface;
+use App\Domain\Repository\ProductCategoryRepositoryInterface;
+use App\Infrastructure\Repository\ProductCategoryRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(RepositoryInterface::class, ExampleRepository::class);
+        $this->app->bind(ProductCategoryRepositoryInterface::class, ProductCategoryRepository::class);
     }
 
     public function boot(): void

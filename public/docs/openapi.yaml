@@ -23,8 +23,10 @@ tags:
   - name: User
     description: Endpoints relacionados aos usuários
 paths:
-  /test:
-    $ref: './components/paths/example/Item.yaml'
+  /product-categories:
+    $ref: './components/paths/product-category/Collection.yaml'
+  /product-categories/{id}:
+    $ref: './components/paths/product-category/Item.yaml'
 components:
   schemas:
     ProductCategory:
