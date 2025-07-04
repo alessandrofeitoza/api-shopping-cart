@@ -1,0 +1,31 @@
+get:
+  tags:
+    - ProductCategory
+  summary: Get A list of Product Category
+  responses:
+    '200':
+      description: Lista de Categorias
+      content:
+        application/json:
+          schema:
+            items:
+              oneOf:
+                - $ref: '../../schemas/ProductCategory.yaml'
+
+post:
+  tags:
+    - ProductCategory
+  summary: Creates a Category of Products
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/ProductCategory.yaml'
+  responses:
+    '201':
+      description: Categoria criada
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ProductCategory.yaml'

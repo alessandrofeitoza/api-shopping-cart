@@ -1,0 +1,43 @@
+get:
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  tags:
+    - ProductCategory
+  summary: Get A Product Category
+  responses:
+    '200':
+      description: Categoria encontrada
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ProductCategory.yaml'
+
+patch:
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  tags:
+    - ProductCategory
+  summary: Updates A Product Category
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/ProductCategory.yaml'
+  responses:
+    '200':
+      description: Categoria atualizada
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ProductCategory.yaml'
+
+delete:
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  tags:
+    - ProductCategory
+  summary: Removes A Product Category
+  responses:
+    '204':
+      description: Categoria removida
