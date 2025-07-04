@@ -2,42 +2,42 @@ get:
   parameters:
     - $ref: '../../parameters/path/uuid.yaml'
   tags:
-    - User
-  summary: Get an User
+    - Product
+  summary: Get a Product
   responses:
     '200':
-      description: Usuário encontrado
+      description: Produto encontrado
       content:
         application/json:
           schema:
-            $ref: '../../schemas/User.yaml'
+            $ref: '../../schemas/Product.yaml'
 
 patch:
   parameters:
     - $ref: '../../parameters/path/uuid.yaml'
   tags:
-    - User
-  summary: Updates an User
+    - Product
+  summary: Updates a Product
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          $ref: '../../schemas/User.yaml'
+          $ref: '../../schemas/Product.yaml'
   responses:
     '200':
-      description: Usuário atualizado
+      description: Produto atualizado
       content:
         application/json:
           schema:
-            $ref: '../../schemas/User.yaml'
+            $ref: '../../schemas/Product.yaml'
 
 delete:
   parameters:
     - $ref: '../../parameters/path/uuid.yaml'
   tags:
-    - User
-  summary: Removes an User
+    - Product
+  summary: Removes a Product
   responses:
     '204':
-      description: Usuário removido
+      description: Produto removido
