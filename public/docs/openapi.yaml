@@ -6,6 +6,7 @@ info:
     - Product
     - ProductCategory
     - User
+    - ShoppingCart
 
     Links Importantes:
     - [Github](https://github.com/alessandrofeitoza/api-shopping-cart)
@@ -28,6 +29,10 @@ paths:
     $ref: './components/paths/product-category/Collection.yaml'
   /product-categories/{id}:
     $ref: './components/paths/product-category/Item.yaml'
+  /products:
+    $ref: './components/paths/product/Collection.yaml'
+  /products/{id}:
+    $ref: './components/paths/product/Item.yaml'
   /users:
     $ref: './components/paths/user/Collection.yaml'
   /users/{id}:
