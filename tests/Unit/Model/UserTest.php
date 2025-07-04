@@ -24,7 +24,7 @@ class UserTest extends TestCase
         $this->assertTrue(password_verify('123456', $user->password));
         $this->assertEquals('Chiquim da Silva', $user->name);
         $this->assertEquals('chiquim@email.com', $user->email);
-        $this->assertInstanceOf(UuidInterface::class, Uuid::fromString($user->id));
+        $this->assertInstanceOf(UuidInterface::class, $user->getId());
         $this->assertEquals(UserStatusEnum::AWAITING_CONFIRMATION->value, $user->status);
         $this->assertEquals(UserRoleEnum::ROLE_USER->value, $user->roles[0]);
     }

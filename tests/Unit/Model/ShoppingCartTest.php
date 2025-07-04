@@ -20,7 +20,7 @@ class ShoppingCartTest extends TestCase
         $cart->setUserId((string) Uuid::uuid4());
         $cart->setQuantity(3);
 
-        $this->assertInstanceOf(UuidInterface::class, Uuid::fromString($cart->id));
+        $this->assertInstanceOf(UuidInterface::class, $cart->getId());
         $this->assertInstanceOf(UuidInterface::class, Uuid::fromString($cart->product_id));
         $this->assertInstanceOf(UuidInterface::class, Uuid::fromString($cart->user_id));
         $this->assertEquals(3, $cart->quantity);

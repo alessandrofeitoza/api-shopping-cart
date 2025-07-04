@@ -6,6 +6,7 @@ namespace App\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 class ShoppingCart extends Model
@@ -44,6 +45,11 @@ class ShoppingCart extends Model
         $this->id = $uuid->toString();
     }
 
+    public function getId(): UuidInterface
+    {
+        return Uuid::fromString($this->id);
+    }
+
     public function setProductId(string $productId): void
     {
         $this->attributes['product_id'] = $productId;
@@ -57,5 +63,10 @@ class ShoppingCart extends Model
     public function setQuantity(int $quantity): void
     {
         $this->attributes['quantity'] = $quantity;
+    }
+
+    public function addQuantity(int $quantity): void
+    {
+        $this->attributes['quantity'] += $quantity;
     }
 }
