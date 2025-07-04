@@ -1,0 +1,43 @@
+get:
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  tags:
+    - User
+  summary: Get an User
+  responses:
+    '200':
+      description: Usuário encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/User.yaml'
+
+patch:
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  tags:
+    - User
+  summary: Updates an User
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/User.yaml'
+  responses:
+    '200':
+      description: Usuário atualizado
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/User.yaml'
+
+delete:
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  tags:
+    - User
+  summary: Removes an User
+  responses:
+    '204':
+      description: Usuário removido

@@ -14,7 +14,7 @@ Api RESTful para gerenciamento de um carrinho de compras
 
 - [Como instalar](./help/INSTALL.md)
 - [Decisões Técnicas](./help/TECHNICAL-DECISIONS.md)
-- [Github Actions](./help/INSTALL.md)
+- [Github Actions](./help/ACTIONS.md)
 - [Documentação da API](http://localhost:8080/docs/index.html)
 - [Github Project](https://github.com/users/alessandrofeitoza/projects/6/views/1)
 
