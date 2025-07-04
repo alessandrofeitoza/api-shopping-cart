@@ -19,15 +19,27 @@ class ShoppingCartSeeder extends Seeder
         $values = [
             [
                 'id' => '22222222-aaaa-bbbb-cccc-000000000001',
-                'product_id' => $products->random(),
-                'user_id' => $users->random(),
+                'product_id' => $products[0],
+                'user_id' => $users[0],
                 'quantity' => 2,
             ],
             [
                 'id' => '22222222-aaaa-bbbb-cccc-000000000002',
-                'product_id' => $products->random(),
-                'user_id' => $users->random(),
+                'product_id' => $products[1],
+                'user_id' => $users[1],
                 'quantity' => 1,
+            ],
+            [
+                'id' => '33333333-aaaa-bbbb-cccc-000000000002',
+                'product_id' => $products[2],
+                'user_id' => $users[2],
+                'quantity' => 5,
+            ],
+            [
+                'id' => '44443333-aaaa-bbbb-cccc-000000000002',
+                'product_id' => $products[2],
+                'user_id' => $users[0],
+                'quantity' => 3,
             ],
         ];
 

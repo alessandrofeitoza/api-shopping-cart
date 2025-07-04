@@ -9,6 +9,7 @@ use App\Infrastructure\Supports\Enums\UserStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 class User extends Authenticatable
@@ -74,6 +75,11 @@ class User extends Authenticatable
     public function setId(UuidInterface $uuid): void
     {
         $this->id = $uuid->toString();
+    }
+
+    public function getId(): UuidInterface
+    {
+        return Uuid::fromString($this->id);
     }
 
     public function setName(string $name): void

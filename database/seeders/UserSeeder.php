@@ -11,7 +11,7 @@ use Ramsey\Uuid\Uuid;
 
 class UserSeeder extends Seeder
 {
-    private const VALUES = [
+    public const array VALUES = [
         [
             'id' => '1789995d-dceb-4df1-a1e0-853d88edab74',
             'name' => 'Alessandro Feitoza',
