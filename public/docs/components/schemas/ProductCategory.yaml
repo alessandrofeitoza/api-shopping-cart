@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: "ID da Categoria"
+    example: 123
+  name:
+    type: string
+    maxLength: 50
+    description: "Nome da Categoria dos produtos"
+    example: "Bebidas"
+  description:
+    type: string
+    maxLength: 255
+    description: "Descrição da Categoria"
+    example: "Bebidas em geral"

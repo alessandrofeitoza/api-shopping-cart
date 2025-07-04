@@ -1,0 +1,33 @@
+openapi: 3.0.2
+info:
+  title: API Shopping Cart
+  description: |-
+    API responsável por praticamente todas as funcionalidades de gerenciamento:
+    - ProductCategory
+    - User
+
+    Links Importantes:
+    - [Github](https://github.com/alessandrofeitoza/api-shopping-cart)
+
+  license:
+    name: GPLv3
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: /api
+tags:
+  - name: ProductCategory
+    description: Endpoints relacionados as categorias dos produtos
+  - name: User
+    description: Endpoints relacionados aos usuários
+paths:
+  /test:
+    $ref: './components/paths/example/Item.yaml'
+components:
+  schemas:
+    ProductCategory:
+      $ref: './components/schemas/ProductCategory.yaml'
+    User:
+      $ref: './components/schemas/User.yaml'
