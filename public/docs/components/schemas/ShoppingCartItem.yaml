@@ -30,3 +30,14 @@ properties:
     nullable: true
     description: "Data da última atualização do item no carrinho"
     example: "2024-07-05T12:00:00Z"
+  name:
+    type: string
+    example: Product Name
+  unitPrice:
+    type: number
+    format: float
+    example: 200.10
+  totalPrice:
+    type: number
+    format: float
+    example: 400.20

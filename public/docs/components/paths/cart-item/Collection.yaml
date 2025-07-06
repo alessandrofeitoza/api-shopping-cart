@@ -1,0 +1,45 @@
+get:
+  tags:
+    - Shopping Cart
+  parameters:
+    - $ref: '../../parameters/path/user.yaml'
+  summary: Get A list of Item on User Shopping Cart
+  responses:
+    '200':
+      description: Lista de Item no carrinho do usuário
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '../../schemas/ShoppingCartItem.yaml'
+
+post:
+  tags:
+    - Shopping Cart
+  parameters:
+    - $ref: '../../parameters/path/user.yaml'
+  summary: Add a new item into User Shopping Cart
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            quantity:
+              type: number
+              format: integer
+              example: 2
+            product_id:
+              type: string
+              format: uuid
+              description: "ID do Produto"
+              example: "1789995d-dceb-4df1-a122-6e5f3d3c61f2"
+
+  responses:
+    '201':
+      description: Item adicionado ao carrinho do usuário
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '../../schemas/ShoppingCartItem.yaml'
