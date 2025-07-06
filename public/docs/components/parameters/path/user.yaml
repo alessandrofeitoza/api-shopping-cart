@@ -1,8 +1,8 @@
-name: 'id'
+name: 'user'
 in: path
 schema:
   type: uuid
   example: 89e14293-0183-463b-9906-74c5d3ea00a9
 required: true
-description: O identificador do objeto
+description: O identificador do usuário
 example: 89e14293-0183-463b-9906-74c5d3ea00a9

@@ -1,0 +1,53 @@
+get:
+  parameters:
+    - $ref: '../../parameters/path/user.yaml'
+    - $ref: '../../parameters/path/uuid.yaml'
+  tags:
+    - Shopping Cart
+  summary: Get an User ShoppingCart Item
+  responses:
+    '200':
+      description: Item do Carrinho de Compras encontrado
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '../../schemas/ShoppingCartItem.yaml'
+
+
+patch:
+  parameters:
+    - $ref: '../../parameters/path/user.yaml'
+    - $ref: '../../parameters/path/uuid.yaml'
+  tags:
+    - Shopping Cart
+  summary: Updates an User Shopping Cart
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            quantity:
+              type: number
+              format: integer
+              example: 2
+  responses:
+    '200':
+      description: Carrinho de Compras atualizado
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '../../schemas/ShoppingCartItem.yaml'
+
+delete:
+  parameters:
+    - $ref: '../../parameters/path/user.yaml'
+    - $ref: '../../parameters/path/uuid.yaml'
+  tags:
+    - Shopping Cart
+  summary: Removes an Item from ShoppingCart
+  responses:
+    '204':
+      description: Item removido do carrinho do usuário

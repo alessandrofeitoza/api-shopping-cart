@@ -37,13 +37,17 @@ paths:
     $ref: './components/paths/user/Collection.yaml'
   /users/{id}:
     $ref: './components/paths/user/Item.yaml'
+  /users/{user}/cart-items:
+    $ref: './components/paths/cart-item/Collection.yaml'
+  /users/{user}/cart-items/{id}:
+    $ref: './components/paths/cart-item/Item.yaml'
 components:
   schemas:
     Product:
       $ref: './components/schemas/Product.yaml'
     ProductCategory:
       $ref: './components/schemas/ProductCategory.yaml'
-    ShoppingCart:
-      $ref: './components/schemas/ShoppingCart.yaml'
+    ShoppingCartItem:
+      $ref: './components/schemas/ShoppingCartItem.yaml'
     User:
       $ref: './components/schemas/User.yaml'
