@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Http\Controllers;
 
 use App\Domain\Service\ShoppingCartService;
+use LogicException;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -31,7 +32,7 @@ class ShoppingCartController extends Controller
             return new JsonResponse(
                 $this->service->finish(Uuid::fromString($user), $request)
             );
-        } catch (BadRequestException $exception) {
+        } catch (LogicException|BadRequestException $exception) {
             return new JsonResponse([
                 'error' => $exception->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
