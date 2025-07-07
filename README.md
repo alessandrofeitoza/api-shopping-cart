@@ -1,6 +1,8 @@
 # API Shopping Cart
 Api RESTful para gerenciamento de um carrinho de compras
 
+[![Coverage Status](https://coveralls.io/repos/github/seu-usuario/seu-repositorio/badge.svg?branch=main)](https://coveralls.io/github/seu-usuario/seu-repositorio?branch=main)
+
 ### Tecnologias
 - Docker
 - PHP 8.4
