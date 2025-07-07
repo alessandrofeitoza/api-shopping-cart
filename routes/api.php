@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Infrastructure\Http\Controllers\OrderController;
 use App\Infrastructure\Http\Controllers\ProductCategoryController;
 use App\Infrastructure\Http\Controllers\ProductController;
 use App\Infrastructure\Http\Controllers\ShoppingCartController;
@@ -33,8 +34,16 @@ Route::controller(ShoppingCartController::class)
     ->prefix('/users/{user}/shopping-cart')
     ->group(function (): void {
         Route::get('/', 'get');
+        Route::post('/finish', 'finish');
         Route::delete('/', 'remove');
     });
+
+Route::controller(OrderController::class)
+    ->prefix('/users/{user}/orders')
+    ->group(function (): void {
+        Route::get('/', 'getList');
+    });
+
 Route::controller(ShoppingCartItemController::class)
     ->prefix('/users/{user}/cart-items')
     ->group(function (): void {

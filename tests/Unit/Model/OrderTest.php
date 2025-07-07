@@ -19,7 +19,7 @@ class OrderTest extends TestCase
     {
         $order = new Order();
         $order->id = (string) Uuid::uuid4();
-        $order->setUserId((string) Uuid::uuid4());
+        $order->setUserId(Uuid::uuid4());
         $order->setTotalPrice(299.99);
         $order->setStatus(OrderStatusEnum::PENDING);
         $order->setPaymentMethod(PaymentMethodEnum::DEBIT);
