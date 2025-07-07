@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Models;
 
+use App\Infrastructure\Supports\Enums\ShoppingCartStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ramsey\Uuid\Uuid;
@@ -19,6 +20,7 @@ class ShoppingCart extends Model
         'product_id',
         'user_id',
         'quantity',
+        'status',
     ];
 
     protected $casts = [
@@ -29,6 +31,12 @@ class ShoppingCart extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        $this->attributes['status'] = ShoppingCartStatusEnum::AWAITING;
+        parent::__construct($attributes);
+    }
 
     public function product(): BelongsTo
     {
