@@ -52,9 +52,9 @@ class Order extends Model
         );
     }
 
-    public function setUserId(string $userId): void
+    public function setUserId(UuidInterface $userId): void
     {
-        $this->attributes['user_id'] = $userId;
+        $this->attributes['user_id'] = $userId->toString();
     }
 
     public function setTotalPrice(float $totalPrice): void
@@ -90,20 +90,5 @@ class Order extends Model
     public function getId(): UuidInterface
     {
         return Uuid::fromString($this->id);
-    }
-
-    public function setProductId(string $productId): void
-    {
-        $this->attributes['product_id'] = $productId;
-    }
-
-    public function setQuantity(int $quantity): void
-    {
-        $this->attributes['quantity'] = $quantity;
-    }
-
-    public function addQuantity(int $quantity): void
-    {
-        $this->attributes['quantity'] += $quantity;
     }
 }

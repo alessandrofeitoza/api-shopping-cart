@@ -6,6 +6,7 @@ namespace App\Domain\Service;
 
 use App\Domain\Models\ShoppingCart;
 use App\Domain\Repository\ShoppingCartItemRepositoryInterface;
+use App\Infrastructure\Supports\Enums\ShoppingCartStatusEnum;
 use Illuminate\Database\Eloquent\Collection;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -23,6 +24,7 @@ class ShoppingCartItemService
     {
         return $this->repository->findBy([
             'user_id' => $userId,
+            'status' => ShoppingCartStatusEnum::AWAITING->value,
         ]);
     }
 
@@ -31,6 +33,7 @@ class ShoppingCartItemService
         return $this->repository->findOneBy([
             'shopping_carts.id' => $id->toString(),
             'shopping_carts.user_id' => $userId->toString(),
+            'status' => ShoppingCartStatusEnum::AWAITING->value,
         ]);
     }
 
@@ -50,6 +53,7 @@ class ShoppingCartItemService
         $item = $this->repository->findOneBy([
             'shopping_carts.product_id' => $data['product_id'],
             'shopping_carts.user_id' => $userId->toString(),
+            'status' => ShoppingCartStatusEnum::AWAITING->value,
         ]);
 
         if (null === $item) {

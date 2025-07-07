@@ -46,7 +46,7 @@ class OrderSeeder extends Seeder
         foreach ($orders as $value) {
             $order = new Order();
             $order->setId(Uuid::fromString($value['id']));
-            $order->setUserId($value['user_id']);
+            $order->setUserId(Uuid::fromString($value['user_id']));
             $order->setTotalPrice($value['total_price']);
             $order->setOriginalPrice($value['original_price']);
             $order->setStatus($value['status']);

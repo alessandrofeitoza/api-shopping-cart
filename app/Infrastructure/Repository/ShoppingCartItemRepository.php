@@ -6,10 +6,11 @@ namespace App\Infrastructure\Repository;
 
 use App\Domain\Models\ShoppingCart;
 use App\Domain\Repository\ShoppingCartItemRepositoryInterface;
+use App\Infrastructure\Supports\Enums\ShoppingCartStatusEnum;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
-class ShoppingCartItemItemRepository implements ShoppingCartItemRepositoryInterface
+class ShoppingCartItemRepository implements ShoppingCartItemRepositoryInterface
 {
     public function findBy(array $criteria = []): Collection
     {
@@ -40,5 +41,21 @@ class ShoppingCartItemItemRepository implements ShoppingCartItemRepositoryInterf
     public function remove(ShoppingCart $cart): void
     {
         $cart->delete();
+    }
+
+    public function removeMany(Collection $items): void
+    {
+        foreach ($items as $item) {
+            $this->remove($item);
+        }
+    }
+
+    public function updateManyStatus(array $ids, ShoppingCartStatusEnum $status): void
+    {
+        ShoppingCart::query()
+            ->whereIn('id', $ids)
+            ->update([
+                'status' => $status->value,
+            ]);
     }
 }
