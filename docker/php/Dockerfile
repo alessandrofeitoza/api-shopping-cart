@@ -18,9 +18,10 @@ RUN apt-get update && apt-get install -y \
     curl \
     libzip-dev \
     apt-utils \
-    libonig-dev
+    libonig-dev \
+    libpq-dev
 
-RUN docker-php-ext-install zip pdo_mysql mbstring exif
+RUN docker-php-ext-install zip pdo_pgsql pgsql mbstring exif
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install gd
 RUN pecl install pcov
