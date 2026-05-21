@@ -17,5 +17,5 @@ fi
 # Run database migrations
 php artisan migrate --force
 
-# Start supervisord (manages nginx + php-fpm)
-exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+# Start Laravel built-in server
+exec php artisan serve --host=0.0.0.0 --port=80

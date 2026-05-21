@@ -1,5 +1,5 @@
 # ─── Stage 1: Composer dependencies ─────────────────────────────────────────
-FROM php:8.4-fpm AS composer-deps
+FROM php:8.4-cli AS composer-deps
 
 WORKDIR /var/www
 
@@ -22,15 +22,13 @@ RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
 COPY . .
 RUN composer dump-autoload --optimize --no-dev
 
-# ─── Stage 2: Final image (PHP-FPM + Nginx + Supervisord) ────────────────────
-FROM php:8.4-fpm
+# ─── Stage 2: Final image (PHP CLI + Laravel built-in server) ────────────────
+FROM php:8.4-cli
 
 WORKDIR /var/www
 
-# Install system dependencies, PHP extensions, Nginx and Supervisord
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    nginx \
-    supervisor \
     libpq-dev \
     libzip-dev \
     libonig-dev \
@@ -48,16 +46,6 @@ RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/i
 
 # Copy application from build stage
 COPY --from=composer-deps /var/www /var/www
-
-# Copy Nginx config (fastcgi_pass points to 127.0.0.1:9000 — same container)
-COPY docker/nginx/railway.conf /etc/nginx/conf.d/default.conf
-
-# Remove the default Nginx site
-RUN rm -f /etc/nginx/sites-enabled/default
-
-# Copy Supervisord config
-RUN mkdir -p /var/log/supervisor
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy and prepare entrypoint
 COPY docker/start.sh /usr/local/bin/start.sh
