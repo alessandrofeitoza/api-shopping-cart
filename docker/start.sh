@@ -42,17 +42,13 @@ echo "[start.sh] Running migrations..."
 php artisan migrate --force || echo "[start.sh] WARNING: Migrations failed (database may not be ready yet). Continuing..."
 echo "[start.sh] Migrations step complete."
 
-# ── Cache config for faster boot ─────────────────────────────────────────────
-echo "[start.sh] Caching configuration..."
-php artisan config:cache
-php artisan route:cache
-
-# ── Healthcheck: verify the app bootstraps without errors ────────────────────
-echo "[start.sh] Verifying application bootstrap..."
-php artisan about --no-interaction > /dev/null 2>&1 && \
-    echo "[start.sh] Bootstrap OK." || \
-    echo "[start.sh] WARNING: 'artisan about' returned an error — check your config."
-
 # ── Start server ──────────────────────────────────────────────────────────────
 echo "[start.sh] Starting PHP built-in server on 0.0.0.0:80..."
-exec php -S 0.0.0.0:80 -t /var/www/public /var/www/public/index.php
+php -S 0.0.0.0:80 -t /var/www/public /var/www/public/index.php &
+SERVER_PID=$!
+
+# Give the server a moment to bind to the port before Railway probes it
+sleep 2
+
+echo "[start.sh] Server is up (PID $SERVER_PID). Waiting..."
+wait $SERVER_PID
