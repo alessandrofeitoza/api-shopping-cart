@@ -52,9 +52,14 @@ COPY docker/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
 # Fix storage and cache permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+# Run as root so PHP built-in server can bind to port 80
+RUN chown -R root:root /var/www/storage /var/www/bootstrap/cache \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 EXPOSE 80
+
+# Healthcheck: poll the Laravel /up endpoint every 30s
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost/up || exit 1
 
 CMD ["/usr/local/bin/start.sh"]
