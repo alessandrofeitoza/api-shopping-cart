@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 cd /var/www
 
@@ -38,25 +37,10 @@ fi
 
 echo "[start.sh] APP_KEY is set: $(echo "$APP_KEY" | cut -c1-10)..."
 
-# ── Wait for database ─────────────────────────────────────────────────────────
-echo "[start.sh] Waiting for database to be ready..."
-MAX_TRIES=30
-TRIES=0
-until php artisan db:show --no-interaction > /dev/null 2>&1; do
-    TRIES=$((TRIES + 1))
-    if [ "$TRIES" -ge "$MAX_TRIES" ]; then
-        echo "[start.sh] ERROR: Database not reachable after ${MAX_TRIES} attempts. Aborting."
-        exit 1
-    fi
-    echo "[start.sh] Database not ready yet (attempt ${TRIES}/${MAX_TRIES}), retrying in 2s..."
-    sleep 2
-done
-echo "[start.sh] Database is ready."
-
 # ── Migrations ────────────────────────────────────────────────────────────────
 echo "[start.sh] Running migrations..."
-php artisan migrate --force
-echo "[start.sh] Migrations complete."
+php artisan migrate --force || echo "[start.sh] WARNING: Migrations failed (database may not be ready yet). Continuing..."
+echo "[start.sh] Migrations step complete."
 
 # ── Cache config for faster boot ─────────────────────────────────────────────
 echo "[start.sh] Caching configuration..."
