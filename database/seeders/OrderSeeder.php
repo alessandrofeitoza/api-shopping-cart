@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
                 'id' => '55555555-aaaa-bbbb-cccc-000000000001',
                 'user_id' => $users[0],
                 'total_price' => 160.75,
-                'original_price' => 150.75,
+                'original_price' => 170.75,
                 'status' => OrderStatusEnum::FINISHED,
                 'payment_method' => PaymentMethodEnum::PIX,
                 'discount' => 10.00,
