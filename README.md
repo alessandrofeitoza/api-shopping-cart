@@ -15,6 +15,7 @@ Api RESTful para gerenciamento de um carrinho de compras
 **Abaixo alguns links rápidos para documentações especificas**
 
 - [Como instalar](./help/INSTALL.md)
+- [Arquitetura (C4 Model)](./help/C4-MODEL.md)
 - [Decisões Técnicas](./help/TECHNICAL-DECISIONS.md)
 - [Github Actions](./help/ACTIONS.md)
 - [Documentação da API](http://localhost:8080/docs/index.html)
